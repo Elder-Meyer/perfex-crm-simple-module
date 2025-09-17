@@ -1,0 +1,45 @@
+# Configuraciones sensibles
+application/config/config.php
+application/config/database.php
+application/config/email.php
+application/config/migration.php
+application/config/foreign_chars.php
+application/config/hooks.php
+application/config/constants.php
+application/config/user.php
+application/config/upload.php
+
+# Archivos de uploads y archivos adjuntos (datos de usuarios)
+uploads/
+files/
+
+# Cachés y sesiones
+application/cache/
+application/logs/
+application/sessions/
+assets/cache/
+
+# Archivos temporales y de mantenimiento
+tmp/
+temp/
+maintenance.html
+.infomaniak-maintenance.html  # Si usas hosting específico
+
+# Entornos locales (desarrollo)
+.env
+.vscode/
+.idea/  # Si usas PhpStorm/IntelliJ
+*.log
+
+# Dependencias (si usas Composer)
+vendor/
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos de backups automáticos de Perfex
+backups/  # Si tienes backups locales
+
+# Módulos personalizados sensibles (ajusta si tienes)
+modules/*/config.php
