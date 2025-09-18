@@ -12,9 +12,9 @@ Version: 2.3.0
 Requires at least: 2.3.*
 */
 
-hooks()->add_action('admin_init', 'my_module_menu_item_collapsible');
+hooks()->add_action('admin_init', 'sample_module_menu_item_collapsible');
 
-function my_module_menu_item_collapsible()
+function sample_module_menu_item_collapsible()
 {
     $CI = &get_instance();
 
@@ -25,13 +25,15 @@ function my_module_menu_item_collapsible()
         'icon'     => 'fa fa-question-circle', // Font awesome icon
     ]);
 
+    
+    $base_url = admin_url('sample_module');
     // The first paremeter is the parent menu ID/Slug
     $CI->app_menu->add_sidebar_children_item('custom-menu-unique-id', [
         'slug'     => 'child-to-custom-menu-item', // Required ID/slug UNIQUE for the child menu
         'name'     => 'Sub Menu', // The name if the item
-        'href'     => 'https://perfexcrm.com/', // URL of the item
+        'href'     => $base_url, // URL of the item
         'position' => 5, // The menu position
         'icon'     => 'fa fa-exclamation', // Font awesome icon
     ]);
-
 }
+
