@@ -30,11 +30,15 @@ class Saludo extends Module {
     }
     
     public function install() {
-        return true; // Lógica para instalación (crear tablas, etc.)
+        return true;
     }
     
     public function uninstall() {
-        return true; // Lógica para desinstalación
+        return true;
     }
     
+    public function register_language_files($language) {
+        $lang_path = module_dir_path('saludo') . 'language/';
+        register_language_files($lang_path, [$language]);
+    }
 }
