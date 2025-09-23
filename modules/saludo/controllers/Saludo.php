@@ -8,7 +8,7 @@ class Saludo extends AdminController {
     }
     
     public function index() {
-        $data['title'] = _l('saludo_title');
+        $data['title'] = 'Módulo de Saludo'; // Título estático en español
         $data['mensaje'] = $this->saludo_model->get_mensaje();
         $this->load->view('saludo/admin/saludo/vista', $data);
     }

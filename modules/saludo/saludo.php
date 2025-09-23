@@ -10,35 +10,31 @@ Description: Sample module SALUDO.
 Version: 2.3.0
 Requires at least: 2.3.*
 */
+hooks()->add_action('admin_init', 'saludo_module_init');
+hooks()->add_action('admin_init', 'saludo_module_menu_item');
 
-class Saludo extends Module {
-    public $version = '1.0.0';
-    
-    public function info() {
-        return [
-            'name' => [
-                'en' => 'Saludo Module',
-                'es' => 'Módulo de Saludo'
-            ],
-            'description' => [
-                'en' => 'A simple greeting module.',
-                'es' => 'Un módulo simple de saludo.'
-            ],
-            'version' => $this->version,
-            'author' => 'Tu Nombre'
-        ];
-    }
-    
-    public function install() {
-        return true;
-    }
-    
-    public function uninstall() {
-        return true;
-    }
-    
-    public function register_language_files($language) {
-        $lang_path = module_dir_path('saludo') . 'language/';
-        register_language_files($lang_path, [$language]);
-    }
+function saludo_module_init() { 
+    return [
+        'name' => [
+            'en' => 'Saludo Module',
+            'es' => 'Módulo de Saludo en español'
+        ],
+        'description' => [
+            'en' => 'A simple greeting module.',
+            'es' => 'Un módulo simple de saludo.'
+        ],
+        'version' => '1.0.0',
+        'author' => 'Tu Nombre'
+    ];
+ 
+}
+
+function saludo_module_menu_item() {
+    $CI = &get_instance();
+    $CI->app_menu->add_sidebar_menu_item('saludo-menu-item', [
+        'name'     => 'Saludo',
+        'href'     => admin_url('saludo'),
+        'position' => 20,
+        'icon'     => 'fa-solid fa-face-laugh-squint fa-bounce',
+    ]);
 }
