@@ -13,6 +13,7 @@ Requires at least: 2.3.*
 */
 
 hooks()->add_action('admin_init', 'sample_module_menu_item_collapsible');
+register_payment_gateway('example_gateway', 'sample_module');
 
 function sample_module_menu_item_collapsible()
 {
