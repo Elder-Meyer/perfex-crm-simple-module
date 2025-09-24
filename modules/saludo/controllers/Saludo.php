@@ -1,23 +1,25 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Saludo extends AdminController  // Nota: AdminController, no Admin_controller (es singular en Perfex)
+class Saludo extends AdminController
 {
     public function __construct()
     {
         parent::__construct();
-        // Aquí puedes cargar modelos si los necesitas, ej: $this->load->model('Saludo_model');
+        $this->load->model('saludo_model');
     }
 
     public function index()
     {
-        // Título de la página (aparece en el header del admin)
-        $data['title'] = 'Titulo de saludo';  // _l() es para traducciones, pero por ahora usa un string simple
+        if ($this->input->post()) {
+            $mensaje = $this->input->post('mensaje');
+            $this->saludo_model->guardar_saludo($mensaje);
+            set_alert('success', 'Saludo guardado con éxito');
+            redirect(admin_url('saludo'));
+        }
 
-        // Carga la vista con datos (opcional)
-        $data['mensaje'] = '¡Hola, mundo! Este es tu primer módulo en Perfex CRM. 😊';
-
-        // Carga la vista principal
+        $data['title'] = _l('Saludo');
+        $data['saludos'] = $this->saludo_model->get_saludos();
         $this->load->view('admin/saludo/index', $data);
     }
 }
